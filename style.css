@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
+body {
+  background-color: #f4a5ae;
+  overflow: hidden;
+  user-select: none;
+}
+.tposeshrek {
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  left: 70%;
+}
+.coquette1 {
+  left: 76%;
+}
+.coquette1,
+.coquette2,
+.coquette3,
+.coquette4 {
+  width: 200px;
+  position: absolute;
+}
+.eminem {
+  width: 300px;
+  position: absolute;
+  left: 80%;
+  top: 60%;
+}
+.coquette2 {
+  left: 89%;
+  top: 59%;
+}
+.tulips {
+  width: 300px;
+  position: absolute;
+  top: 67%;
+  left: -20px;
+}
+.coquette3 {
+  top: 80%;
+  left: -3%;
+}
+.pompom {
+  width: 200px;
+  position: absolute;
+  left: -1%;
+}
+.coquette4 {
+  top: 5%;
+  left: -1%;
+}
+
+.no,
+.yes {
+  background-color: #ff9fe5;
+  border: none;
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  border-radius: 100px;
+  width: 300px;
+  height: 80px;
+}
+.yes {
+  top: 70%;
+  left: 35%;
+}
+.no {
+  top: 70%;
+  left: 65%;
+}
+.text {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  top: 50%;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+.img {
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -90%);
+}
+.msg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 1200%);
+  visibility: hidden;
+}
+.send {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 1400%);
+  visibility: hidden;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <title>WILL U PLEASE TALK</title>
+  </head>
+  <body>
+    <img src="shrektpose.png" class="tposeshrek" />
+    <img src="coquette.png" class="coquette1" />
+    <img src="eminemcrab.png" class="eminem" />
+    <img src="coquette.png" class="coquette2" />
+    <img src="tulips.png" class="tulips" />
+    <img src="coquette.png" class="coquette3" />
+    <img src="pompompurin.png" class="pompom" />
+    <img src="coquette.png" class="coquette4" />
+
+    <button class="no" id="no">👎👎👎</button>
+    <button class="yes" id="yes">👍👍👍</button>
+
+    <div class="text" id="text">
+      hello, gusto ka raw ng amo ko, gusto mo rin daw ba siya?
+    </div>
+    <img src="tom.jpg" class="img" id="img" />
+    <input
+      type="text"
+      name=""
+      id="msg"
+      class="msg"
+      placeholder="MAY SASABIHIN KA BA???"
+    />
+    <button class="send" id="send">send yo message</button>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+      import {
+        getFirestore,
+        addDoc,
+        doc,
+        collection,
+      } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBUsLg-GyEiyCEBDNeCotLlitbR89eQdps",
+        authDomain: "simple-js-server.firebaseapp.com",
+        projectId: "simple-js-server",
+        storageBucket: "simple-js-server.appspot.com",
+        messagingSenderId: "833818898503",
+        appId: "1:833818898503:web:a587877536b876d8164162",
+        measurementId: "G-JX5NTX99JT",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        let yes = d("yes");
+        let no = d("no");
+        let imgbox = d("img");
+        let tb = d("text");
+        let send = d("send");
+        let tbmsg = d("msg");
+        let imgArr = [
+          "shocked.png",
+          "sadbob.png",
+          "nooo.jpg",
+          "nothingwecando.png",
+        ];
+        let textArr = [
+          "ahaha mali ata na click mo bai",
+          "misclick lang ata hahaha...",
+          "ayaw mo talaga? last try na to!!",
+          "edi wag, alam ng amo ko to",
+        ];
+
+        let currentIndex = 0;
+        let allow = true;
+        let alreadyAllow = false;
+        let currClick = 0;
+        let audio = new Audio("ilikeher.mp3");
+        audio.volume = 0.1;
+        audio.loop = true;
+        audio.play();
+
+        no.addEventListener("click", () => {
+          console.log("clicked no");
+          if (currentIndex < 4 && allow) {
+            tb.innerText = textArr[currentIndex];
+            imgbox.src = imgArr[currentIndex];
+            currentIndex++;
+            positionNoButton();
+            storeButtonClick("none", "no");
+            currClick++;
+          }
+        });
+
+        yes.addEventListener("click", () => {
+          if (!alreadyAllow) {
+            alert("hehehhehehehehehhfefeahfhahaghwad kilig itlog ko bro");
+            allow = false;
+            tb.innerText = "sinungaling hahahahaha";
+            imgbox.src = "me.jpg";
+            alreadyAllow = true;
+            storeButtonClick("none", "yes");
+            currClick++;
+            tbmsg.style.visibility = "visible";
+            send.style.visibility = "visible";
+          }
+        });
+        send.addEventListener("click", () => {
+          storeButtonClick(tbmsg.value, "SHE SAID YES SIR");
+        });
+        function positionNoButton() {
+          const windowWidth = window.innerWidth;
+          const windowHeight = window.innerHeight;
+
+          const randomX = Math.floor(
+            Math.random() * (windowWidth - no.clientWidth)
+          );
+          const randomY = Math.floor(
+            Math.random() * (windowHeight - no.clientHeight)
+          );
+
+          no.style.left = `${randomX}px`;
+          no.style.top = `${randomY}px`;
+        }
+
+        function d(obj) {
+          return document.getElementById(obj);
+        }
+
+        function storeButtonClick(message, choice) {
+          addDoc(collection(db, "newstore"), {
+            message: message,
+            yesorno: choice,
+          })
+            .then((docRef) => {
+              console.log("Button click stored with ID: ", docRef.id);
+            })
+            .catch((error) => {
+              console.error("Error storing button click: ", error);
+            });
+        }
+
+        function d(obj) {
+          return document.getElementById(obj);
+        }
+      });
+    </script>
+  </body>
+</html>
