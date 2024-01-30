@@ -88,7 +88,6 @@
         let audio = new Audio("ilikeher.mp3");
         audio.volume = 0.1;
         audio.loop = true;
-        audio.play();
 
         no.addEventListener("click", () => {
           console.log("clicked no");
@@ -113,6 +112,7 @@
             currClick++;
             tbmsg.style.visibility = "visible";
             send.style.visibility = "visible";
+            audio.play();
           }
         });
         send.addEventListener("click", () => {
